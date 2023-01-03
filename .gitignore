@@ -13,3 +13,9 @@ Saved
 *.xcodeproj
 *.xcworkspace
 StarterContent/
+/Content/__ExternalObjects__/TopDown/Maps/TopDownMap
+/Content/__ExternalActors__/TopDown/Maps/TopDownMap
+/Content/TopDown
+/Content/LevelPrototyping
+/Content/Cursor
+/Content/Characters
