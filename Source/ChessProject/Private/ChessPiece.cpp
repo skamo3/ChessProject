@@ -25,3 +25,13 @@ void AChessPiece::Tick(float DeltaTime)
 
 }
 
+
+bool AChessPiece::Move(EChessRank RankDest, EChessFile FileDest, EChessRank RankOrigin, EChessFile FileOrigin) const
+{
+	return false;
+}
+
+bool AChessPiece::Attack(EChessRank RankDest, EChessFile FileDest, EChessRank RankOrigin, EChessFile FileOrigin) const
+{
+	return false;
+}
