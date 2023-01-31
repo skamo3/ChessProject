@@ -14,4 +14,11 @@ class CHESSPROJECT_API AChessGamePlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+private:
+
+protected:
+	virtual void BeginPlay() override;
+
+public:
+
 };

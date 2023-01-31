@@ -13,5 +13,13 @@ UCLASS()
 class CHESSPROJECT_API AChessGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+
+private:
+
+protected:
+	virtual void BeginPlay() override;
+
+public:
+
 	
 };

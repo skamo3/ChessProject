@@ -3,3 +3,6 @@
 
 #include "ChessGameMode.h"
 
+void AChessGameMode::BeginPlay()
+{
+}
