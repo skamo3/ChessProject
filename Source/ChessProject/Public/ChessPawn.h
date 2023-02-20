@@ -13,5 +13,12 @@ UCLASS()
 class CHESSPROJECT_API AChessPawn : public AChessPiece
 {
 	GENERATED_BODY()
+
+private:
+
+protected:
+
+public:
+
 	
 };
