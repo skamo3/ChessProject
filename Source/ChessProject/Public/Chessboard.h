@@ -4,7 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "ChessTypes.h"
 #include "Chessboard.generated.h"
+
+
+enum class EChessFile : uint8;
+enum class EChessRank : uint8;
 
 UCLASS()
 class CHESSPROJECT_API AChessboard : public AActor
@@ -12,22 +17,55 @@ class CHESSPROJECT_API AChessboard : public AActor
 	GENERATED_BODY()
 	
 private:
-
-	TArray<class ChessPiece*> Pieces;
-
+	
 public:	
 	// Sets default values for this actor's properties
 	AChessboard();
 
 protected:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Board")
+		TArray<class AChessPiece*> Pieces;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Object")
+		TSubclassOf<class AChessPawn> ChessPawn;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Object")
+		TSubclassOf<class AChessRook> ChessRook;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Object")
+		TSubclassOf<class AChessKnight> ChessKnight;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Object")
+		TSubclassOf<class AChessBishop> ChessBishop;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Object")
+		TSubclassOf<class AChessQueen> ChessQueen;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Object")
+		TSubclassOf<class AChessKing> ChessKing;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Location")
+		class UDataTable* ChessPieceData;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	UStaticMeshComponent* ChessBoard;
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UFUNCTION()
+		void SpawnPiece(const TSubclassOf<class AChessPiece> piece, const FChessDataRow& Row);
+
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	class ChessPiece* GetPiece(enum class EChessRank Rank, enum class EChessFile File);
-	bool MovePiece(enum class EChessRank RankDest, enum class EChessFile FileDest, enum class EChessRank RankOrigin, enum class EChessFile FileOrigin);
+	class ChessPiece* GetPiece(EChessFile File, EChessRank Rank);
+	bool MovePiece(EChessFile FileDest, EChessRank RankDest, EChessFile FileOrigin, EChessRank RankOrigin);
 
+	void printBoard();
+
+	void LocatingPiece(AChessPiece* TargetPiece, EChessFile FileDest, EChessRank RankDest);
 };
