@@ -3,6 +3,17 @@
 
 #include "ChessGamePlayerController.h"
 
+AChessGamePlayerController::AChessGamePlayerController()
+{
+	SetShowMouseCursor(true);
+	bEnableClickEvents = true;
+	bEnableMouseOverEvents = true;
+
+	
+}
+
+
 void AChessGamePlayerController::BeginPlay()
 {
 }
+
