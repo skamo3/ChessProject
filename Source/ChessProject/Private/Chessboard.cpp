@@ -11,6 +11,7 @@
 #include "ChessKnight.h"
 #include "ChessQueen.h"
 #include "ChessKing.h"
+#include "Components/WidgetComponent.h"
 
 // Sets default values
 AChessboard::AChessboard()
@@ -32,10 +33,8 @@ void AChessboard::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (ChessPieceData != nullptr)
 	{
-		// ChessPieceData->
-
+		check(ChessPieceData);
 		FString ContextString;
 		TArray<FChessDataRow*> Rows;
 		ChessPieceData->GetAllRows<FChessDataRow>(ContextString, Rows);
@@ -65,8 +64,15 @@ void AChessboard::BeginPlay()
 				break;
 			}
 		}
+	}
 		
-		printBoard();
+	printBoard();
+
+	{
+		PathFinderWidgetComponent = NewObject<UWidgetComponent>(this, TEXT("PathFinder"));
+		PathFinderWidgetComponent->RegisterComponent();
+		PathFinderWidgetComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+		PathFinderWidgetComponent->SetWidgetClass(PathFinderWidgetClass);
 	}
 	
 }

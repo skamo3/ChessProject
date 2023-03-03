@@ -51,6 +51,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UStaticMeshComponent* ChessBoard;
 
+	UPROPERTY(EditAnywhere, Category = "Widget")
+		TSubclassOf<class UUserWidget> PathFinderWidgetClass;
+
+	UPROPERTY()
+		class UWidgetComponent* PathFinderWidgetComponent;
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
